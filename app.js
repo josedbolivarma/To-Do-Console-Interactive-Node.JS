@@ -15,6 +15,7 @@ const main = async () => {
 
     if ( tareasDB ) {
       // Establecer las tareas
+      tareas.cargarTareasFromArray(tareasDB);
     }
 
    await pausa();
@@ -30,7 +31,8 @@ const main = async () => {
           break;
 
         case '2':
-          console.log( tareas.listadoArr );
+          // console.log( tareas.listadoArr );
+          tareas.listadoCompleto();
         break;
       }
       
