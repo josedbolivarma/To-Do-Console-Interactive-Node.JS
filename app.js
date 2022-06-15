@@ -5,17 +5,23 @@ const {
      leerInput
     } = require('./helpers/inquirer');
 const Tareas = require('./models/tareas');
+const { guardarDB, leerDB } = require('./helpers/guardarArchivo');
 
 const main = async () => {
     let opt = '';
     const tareas  = new Tareas();
+    
+    const tareasDB = leerDB();
+
+    if ( tareasDB ) {
+      // Establecer las tareas
+    }
+
+   await pausa();
 
     do {
       opt = await inquirerMenu();
-      console.log({ opt });
-      console.log('MENUS')
-      console.log('app.js - LISTADO TAREAS: ',tareas._listado);
-
+ 
       switch (opt) {
         case '1':
             // Crear opción
@@ -28,6 +34,8 @@ const main = async () => {
         break;
       }
       
+      guardarDB( tareas.listadoArr );
+
       await pausa();
       
     } while (opt !== '0');
